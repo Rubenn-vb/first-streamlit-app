@@ -3,7 +3,7 @@ import pandas as pd
 import requests
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 
 file = "https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt"
 my_fruit_list = pd.read_csv(file)
