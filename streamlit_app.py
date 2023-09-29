@@ -1,5 +1,8 @@
 import streamlit
 import pandas as pd
+import requests
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 
 file = "https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt"
 my_fruit_list = pd.read_csv(file)
@@ -20,3 +23,6 @@ fruits_to_show = my_fruit_list.loc[my_fruit_list['Fruit'].isin(fruits_selected)]
 
 # display table
 streamlit.dataframe(fruits_to_show)
+
+streamlit.header("Fruityvice Fruit Advice!")
+streamlit.text(fruityvice_response.json())
